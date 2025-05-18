@@ -1,7 +1,7 @@
 from gestion_dispositivos import listar_dispositivos, agregar_dispositivo, eliminar_dispositivo, ver_estado
 from automatizacion import modo_despertar
+from data import dispositivos
 
-dispositivos = []
 
 def menu():
     while True:
@@ -25,6 +25,8 @@ def menu():
             print("2. Televisor")
             print("3. Música")
             print("4. Otro")
+
+            
 
             opcion_tipo = input("Opción: ")
 
