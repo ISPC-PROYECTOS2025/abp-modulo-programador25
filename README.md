@@ -1,6 +1,6 @@
 Proyecto SmartHome:
 
-Este proyecto consiste en una aplicación de consola escrita en Python para la gestión de dispositivos inteligentes en un hogar. Forma parte del desarrollo del desarrollo del Proyecto Integrador del Módulo Programador. El enofque está en la modularidad, la automatizacions y los principios éticos de desarrollo de Software.
+Este proyecto consiste en una aplicación de consola escrita en Python para la gestión de dispositivos inteligentes en un hogar. Forma parte del desarrollo del Proyecto Integrador del Módulo Programador. El enofque está en la modularidad, la automatizacion y los principios éticos de desarrollo de Software.
 
 Nuestro equipo de trabajo se encuentra conformado de la siguiente manera:
 Gisela Reyna - Carolina Vanucci en Base de Datos
