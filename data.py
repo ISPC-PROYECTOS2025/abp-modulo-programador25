@@ -1,12 +1,20 @@
-dispositivos = {
-    "tv": {
+dispositivos = [
+    {
+        "nombre": "tv-living",
         "tipo": "televisor",
         "estado": "apagado",
-        "ubicacion": "dormitorio"
+        "ubicacion": "living"
     },
-    "musica": {
-        "tipo": "parlante",
+    {
+        "nombre": "musica-living",
+        "tipo": "musica",
         "estado": "apagado",
-        "ubicacion": "dormitorio"
+        "ubicacion": "living"
     },
-}
+    {
+        "nombre": "cafetera",
+        "tipo": "otro",
+        "estado": "apagado",
+        "ubicacion": "cocina"
+    },
+]
