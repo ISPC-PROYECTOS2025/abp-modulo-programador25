@@ -1,5 +1,6 @@
+from data import dispositivos
 
-def listar_dispositivos(dispositivos):
+def listar_dispositivos():
     if not dispositivos:
         print("No hay dispositivos registrados.")
     else:
@@ -7,7 +8,7 @@ def listar_dispositivos(dispositivos):
         for d in dispositivos:
             print(f"- {d['nombre']} ({d['tipo']}) - Estado: {d['estado']}")
 
-def agregar_dispositivo(dispositivos, nombre, tipo):
+def agregar_dispositivo(nombre, tipo):
     dispositivo = {
         "nombre": nombre,
         "tipo": tipo,
@@ -16,7 +17,7 @@ def agregar_dispositivo(dispositivos, nombre, tipo):
     dispositivos.append(dispositivo)
     print(f"Dispositivo '{nombre}' ha sido agregado correctamente.")
 
-def eliminar_dispositivo(dispositivos, nombre):
+def eliminar_dispositivo(nombre):
     for d in dispositivos:
         if d["nombre"].lower() == nombre.lower():
             dispositivos.remove(d)
@@ -24,10 +25,11 @@ def eliminar_dispositivo(dispositivos, nombre):
             return
     print("Dispositivo no encontrado.")
 
-def ver_estado(dispositivos):
+def ver_estado():
     if not dispositivos:
         print("No hay dispositivos para mostrar.")
         return
     print("\nEstado de los dispositivos:")
     for d in dispositivos:
         print(f"- {d['nombre']} ({d['tipo']}): {d['estado']}")
+

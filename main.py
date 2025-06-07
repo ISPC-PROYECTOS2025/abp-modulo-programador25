@@ -16,7 +16,7 @@ def menu():
         opcion = input("Seleccioná una opción: ")
 
         if opcion == "1":
-            listar_dispositivos(dispositivos)
+            listar_dispositivos()
 
         elif opcion == "2":
             nombre = input("Nombre del dispositivo: ")
@@ -28,6 +28,7 @@ def menu():
             print("4. Otro")
 
             opcion_tipo = input("Opción: ")
+            tipo = "otro"  
 
             if opcion_tipo == "1":
                 tipo = "luz"
@@ -37,11 +38,8 @@ def menu():
                 tipo = "música"
             elif opcion_tipo == "4":
                 tipo = input("Ingrese el tipo de dispositivo personalizado: ")
-            else:
-                print("Opción inválida. Se asignará tipo 'otro'.")
-                tipo = "otro"
 
-            agregar_dispositivo(dispositivos, nombre, tipo)
+            agregar_dispositivo(nombre, tipo)
 
         elif opcion == "3":
             if not dispositivos:
@@ -55,19 +53,19 @@ def menu():
                     seleccion = int(input("Ingrese el número del dispositivo a eliminar: "))
                     if 1 <= seleccion <= len(dispositivos):
                         nombre = dispositivos[seleccion - 1]['nombre']
-                        eliminar_dispositivo(dispositivos, nombre)
+                        eliminar_dispositivo(nombre)
                     else:
                         print("El número ingresado no es correcto.")
                 except ValueError:
                     print("Ingreso inválido. Por favor, ingrese un número.")
 
         elif opcion == "4":
-            ver_estado(dispositivos)
+            ver_estado()
 
         elif opcion == "5":
             horario = input("Ingrese el horario para modo despertar(HH:MM): ")
             print(f"El modo despertar será a las {horario}")
-            modo_despertar(dispositivos, horario)
+            modo_despertar(horario)
 
         elif opcion == "6":
             print("Saliendo del programa...")
@@ -78,3 +76,4 @@ def menu():
 
 
 menu()
+
