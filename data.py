@@ -1,3 +1,5 @@
+usuarios_registrados = []
+
 lista_de_dispositivos = [
     {
         "nombre": "tv-living",
