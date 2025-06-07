@@ -1,11 +1,12 @@
-from data import dispositivos  
+from data import lista_de_dispositivos
+  
 
 def modo_despertar(horario):
     encontrado_tv = False
 
-    for d in dispositivos:
-        nombre_minuscula = d["nombre"].lower()
-        if "tv" in nombre_minuscula or "televisor" in nombre_minuscula:
+    for dispositivo in lista_de_dispositivos:
+        nombre_minuscula = dispositivo["nombre"].lower()
+        if "tv" in nombre_minuscula:
             encontrado_tv = True
             break 
         

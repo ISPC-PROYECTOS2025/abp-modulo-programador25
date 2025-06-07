@@ -1,7 +1,6 @@
 from gestion_dispositivos import listar_dispositivos, agregar_dispositivo, eliminar_dispositivo, ver_estado
 from automatizacion import modo_despertar
-from data import dispositivos
-
+from data import lista_de_dispositivos
 
 def menu():
     while True:
@@ -13,61 +12,58 @@ def menu():
         print("5. Activar Modo Despertar")
         print("6. Salir")
 
-        opcion = input("Seleccioná una opción: ")
+        seleccion_menu = input("Seleccioná una opción: ")
 
-        if opcion == "1":
+        if seleccion_menu == "1":
             listar_dispositivos()
 
-        elif opcion == "2":
-            nombre = input("Nombre del dispositivo: ")
+        elif seleccion_menu  == "2":
+            nombre_dispositivo = input("Nombre del dispositivo: ")
 
             print("Elija el tipo de dispositivo:")
             print("1. Luz")
-            print("2. Televisor")
+            print("2. Tv")
             print("3. Música")
             print("4. Otro")
-
             opcion_tipo = input("Opción: ")
-            tipo = "otro"  
+            tipo_dispositivo = "otro"  
 
-            if opcion_tipo == "1":
-                tipo = "luz"
-            elif opcion_tipo == "2":
-                tipo = "tv"
+            if  opcion_tipo == "1":
+                tipo_dispositivo  = "luz"
+            elif  opcion_tipo == "2":
+                tipo_dispositivo = "tv"
             elif opcion_tipo == "3":
-                tipo = "música"
-            elif opcion_tipo == "4":
-                tipo = input("Ingrese el tipo de dispositivo personalizado: ")
+                tipo_dispositivo  = "música"
+            elif  opcion_tipo == "4":
+                tipo_dispositivo  = input("Ingrese el tipo de dispositivo personalizado: ")
 
-            agregar_dispositivo(nombre, tipo)
+            agregar_dispositivo(nombre_dispositivo, tipo_dispositivo )
 
-        elif opcion == "3":
-            if not dispositivos:
+        elif seleccion_menu == "3":
+            if not lista_de_dispositivos:
                 print("No hay dispositivos registrados para eliminar.")
             else:
                 print("\nDispositivos registrados:")
-                for i, dispositivo in enumerate(dispositivos, start=1):
+                for i, dispositivo in enumerate(lista_de_dispositivos, start=1):
                     print(f"{i}. {dispositivo['nombre']} ({dispositivo['tipo']})")
 
                 try:
-                    seleccion = int(input("Ingrese el número del dispositivo a eliminar: "))
-                    if 1 <= seleccion <= len(dispositivos):
-                        nombre = dispositivos[seleccion - 1]['nombre']
-                        eliminar_dispositivo(nombre)
+                    seleccion_eliminar = int(input("Ingrese el número del dispositivo a eliminar: "))
+                    if 1 <= seleccion_eliminar <= len(lista_de_dispositivos):
+                        nombre_dispositivo = lista_de_dispositivos[seleccion_eliminar - 1]['nombre']
+                        eliminar_dispositivo (nombre_dispositivo)
                     else:
                         print("El número ingresado no es correcto.")
                 except ValueError:
                     print("Ingreso inválido. Por favor, ingrese un número.")
 
-        elif opcion == "4":
+        elif seleccion_menu  == "4":
             ver_estado()
 
-        elif opcion == "5":
-            horario = input("Ingrese el horario para modo despertar(HH:MM): ")
-            print(f"El modo despertar será a las {horario}")
-            modo_despertar(horario)
-
-        elif opcion == "6":
+        elif seleccion_menu  == "5":
+            hora_modo_despertar = input("Ingrese el horario para modo despertar(HH:MM): ")
+            modo_despertar(hora_modo_despertar)
+        elif seleccion_menu  == "6":
             print("Saliendo del programa...")
             break
 

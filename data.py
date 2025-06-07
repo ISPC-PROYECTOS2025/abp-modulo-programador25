@@ -1,7 +1,7 @@
-dispositivos = [
+lista_de_dispositivos = [
     {
         "nombre": "tv-living",
-        "tipo": "televisor",
+        "tipo": "tv",
         "estado": "apagado",
         "ubicacion": "living"
     },
