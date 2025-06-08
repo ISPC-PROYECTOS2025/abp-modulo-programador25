@@ -97,4 +97,29 @@ def menu_gestion_dispositivos():
 
         else:
             print("Opción inválida. Intentá de nuevo.")
+def menu_admin(usuario):
+    while True:
+        print(f"\n--- MENÚ ADMIN - {usuario['nombre']} ---")
+        print("1. Consultar automatizaciones activas")
+        print("2. Gestionar dispositivos")
+        print("3. Modificar rol de un usuario")
+        print("4. Cerrar sesión")
 
+        opcion = input("Seleccioná una opción: ")
+
+        if opcion == "1":
+            print("Automatizaciones activas:")
+            for u in usuarios:
+                if u.get("automatizacion_activa", False):
+                    print(f"- Usuario {u['nombre']} tiene una automatización activa")
+        elif opcion == "2":
+            menu_gestion_dispositivos()
+        elif opcion == "3":
+            email = input("Ingrese el email del usuario a modificar: ")
+            modificar_rol (email, usuarios_registrados)
+            
+        elif opcion == "4":
+            print("Cerrando sesión...")
+            break
+        else:
+            print("Opción inválida, intenta de nuevo.")
