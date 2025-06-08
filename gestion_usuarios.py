@@ -83,3 +83,21 @@ def iniciar_registro():
 
 if __name__ == "__main__":
     iniciar_registro()
+    
+def modificar_rol(email, lista_usuarios):
+    for usuario in lista_usuarios:
+        if usuario["email"] == email:
+            print("Ingrese el nuevo rol:")
+            print("1 - usuario")
+            print("2 - admin")
+            opcion = input("Seleccione una opción: ")
+            if opcion == "1":
+                usuario["rol"] = "usuario"
+            elif opcion == "2":
+                usuario["rol"] = "admin"
+            else:
+                print("Opción inválida. No se modificó el rol.")
+                return
+            print("Se cambió correctamente el rol.")
+            return
+    print("No se encontró un usuario con ese email.")
