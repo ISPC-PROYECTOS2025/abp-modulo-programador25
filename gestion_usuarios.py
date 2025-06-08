@@ -1,3 +1,5 @@
+from data import usuarios_registrados
+
 def validar_usuario(usuario: str) -> bool:
     """
     Valida que el nombre de usuario contenga solo letras y números, y tenga al menos 5 caracteres.
@@ -101,3 +103,49 @@ def modificar_rol(email, lista_usuarios):
             print("Se cambió correctamente el rol.")
             return
     print("No se encontró un usuario con ese email.")
+
+def iniciar_sesion():
+    print("\n--- INICIO DE SESIÓN ---")
+    email = input("Correo electrónico: ").strip()
+    contraseña = input("Contraseña: ").strip()
+
+    for usuario in usuarios_registrados:
+        if usuario["email"] == email and usuario["contraseña"] == contraseña:
+            print(f"Bienvenido, {usuario['nombre']}!")
+            return usuario
+
+    print("Correo o contraseña incorrectos.")
+    respuesta = input("¿Desea registrarse? (s/n): ").strip().lower()
+
+    if respuesta == "s":
+        print("\n--- REGISTRO DE NUEVO USUARIO ---")
+
+        while True:
+            nombre = input("Nombre de usuario (letras/números, min 5 caracteres): ").strip()
+            if validar_usuario(nombre):
+                break
+            print("Nombre inválido. Intenta de nuevo.")
+
+        while True:
+            nuevo_email = input("Correo electrónico: ").strip()
+            if validar_correo(nuevo_email):
+                break
+            print("Correo inválido. Intenta de nuevo.")
+
+        while True:
+            nueva_contraseña = input("Contraseña (min 8 caracteres, 1 mayúscula, 1 carácter especial): ").strip()
+            if validar_contraseña(nueva_contraseña):
+                break
+            print("Contraseña inválida. Intenta de nuevo.")
+
+        nuevo_usuario = {
+            "nombre": nombre,
+            "email": nuevo_email,
+            "contraseña": nueva_contraseña,
+            "rol": "usuario"
+        }
+        usuarios_registrados.append(nuevo_usuario)
+        print("¡Usuario registrado con éxito!")
+        return nuevo_usuario
+
+    return None
