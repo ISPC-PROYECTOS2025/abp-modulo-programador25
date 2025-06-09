@@ -65,26 +65,34 @@ def registrar_usuario(usuario: str, correo_electronico: str, contraseña: str):
     print("¡Usuario registrado con éxito!")
     return nuevo_usuario
 
-def registrar_usuario_interactivo():
+def registrar_usuario_interactivo(rol=None):
     print("\n--- REGISTRO DE NUEVO USUARIO ---")
 
-    if len(usuarios) == 0:
-        rol = "admin"
-        print("¡Primera cuenta creada, se asignará rol de admin!")
+    # Determinar rol según parámetro o si hay usuarios
+    if rol is None:
+        if len(usuarios) == 0:
+            rol = "admin"
+            print("¡Primera cuenta creada, se asignará rol de admin!")
+        else:
+            rol = "usuario"
     else:
-        rol = "usuario"
+        if rol == "admin":
+            print("Se asignará rol de admin (por parámetro).")
+        else:
+            print("Se asignará rol de usuario (por parámetro).")
 
+    # Validaciones como antes
     while True:
         nombre = input("Nombre de usuario (letras/números, min 5 caracteres): ").strip()
         if validar_usuario(nombre):
             break
-        print("Nombre inválido. Intenta de nuevo.")  # Validar correo electrónico
+        print("Nombre inválido. Intenta de nuevo.")
+
     while True:
         email = input("Correo electrónico: ").strip()
         if validar_correo(email):
             break
         print("Correo inválido. Intenta de nuevo.")
-
 
     while True:
         contraseña = input("Contraseña (min 8 caracteres, 1 mayúscula, 1 carácter especial): ").strip()
