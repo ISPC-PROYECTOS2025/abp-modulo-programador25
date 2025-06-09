@@ -1,4 +1,4 @@
-from data import usuarios_registrados
+from data import usuarios_registrados as usuarios
 
 def validar_usuario(usuario: str) -> bool:
     """
@@ -41,51 +41,66 @@ def validar_contraseña(contraseña: str) -> bool:
         return False
     return True
 
-def registrar_usuario(usuario: str, correo_electronico: str, contraseña: str) -> bool:
+def registrar_usuario(usuario: str, correo_electronico: str, contraseña: str):
     """
-    Registra un nuevo usuario validando el nombre de usuario, correo electrónico y la fortaleza de la contraseña.
+    Registra un nuevo usuario validando datos y agregándolo a la lista usuarios.
+    Devuelve el dict del usuario registrado o None si falla.
     """
     print(f"\n--- Intentando registrar usuario '{usuario}' ---")
 
     if not validar_usuario(usuario):
-        return False
+        return None
     if not validar_correo(correo_electronico):
-        return False
+        return None
     if not validar_contraseña(contraseña):
-        return False
+        return None
 
+    nuevo_usuario = {
+        "nombre": usuario,
+        "email": correo_electronico,
+        "contraseña": contraseña,
+        "rol": "usuario"  # por defecto usuario normal, o podrías parametrizarlo
+    }
+    usuarios.append(nuevo_usuario)
     print("¡Usuario registrado con éxito!")
-    return True
+    return nuevo_usuario
 
+def registrar_usuario_interactivo():
+    print("\n--- REGISTRO DE NUEVO USUARIO ---")
 
-def iniciar_registro():
-
-    print("\n--- INICIO DEL REGISTRO DE USUARIO ---")
-    print("Por favor, ingresa los siguientes datos:")
+    if len(usuarios) == 0:
+        rol = "admin"
+        print("¡Primera cuenta creada, se asignará rol de admin!")
+    else:
+        rol = "usuario"
 
     while True:
-        nombre_usuario = input("Nombre de usuario (solo letras/números, min 5 caracteres): ")
-        if validar_usuario(nombre_usuario):
+        nombre = input("Nombre de usuario (letras/números, min 5 caracteres): ").strip()
+        if validar_usuario(nombre):
             break
-        print("Inténtalo de nuevo.")
-
+        print("Nombre inválido. Intenta de nuevo.")  # Validar correo electrónico
     while True:
-        email = input("Correo electrónico: ")
+        email = input("Correo electrónico: ").strip()
         if validar_correo(email):
             break
-        print("Inténtalo de nuevo.")
+        print("Correo inválido. Intenta de nuevo.")
+
 
     while True:
-        password = input("Contraseña (min 8 caracteres, 1 mayúscula, 1 carácter especial): ")
-        if validar_contraseña(password):
+        contraseña = input("Contraseña (min 8 caracteres, 1 mayúscula, 1 carácter especial): ").strip()
+        if validar_contraseña(contraseña):
             break
-        print("Inténtalo de nuevo.")
+        print("Contraseña inválida. Intenta de nuevo.")
 
-    registrar_usuario(nombre_usuario, email, password)
-
-if __name__ == "__main__":
-    iniciar_registro()
-    
+    nuevo_usuario = {
+        "nombre": nombre,
+        "email": email,
+        "contraseña": contraseña,
+        "rol": rol
+    }
+    usuarios.append(nuevo_usuario)
+    print(f"¡Usuario registrado con éxito con rol '{rol}'!")
+    return nuevo_usuario
 def modificar_rol(email, lista_usuarios):
     for usuario in lista_usuarios:
         if usuario["email"] == email:
@@ -109,7 +124,7 @@ def iniciar_sesion():
     email = input("Correo electrónico: ").strip()
     contraseña = input("Contraseña: ").strip()
 
-    for usuario in usuarios_registrados:
+    for usuario in usuarios:
         if usuario["email"] == email and usuario["contraseña"] == contraseña:
             print(f"Bienvenido, {usuario['nombre']}!")
             return usuario
@@ -144,7 +159,7 @@ def iniciar_sesion():
             "contraseña": nueva_contraseña,
             "rol": "usuario"
         }
-        usuarios_registrados.append(nuevo_usuario)
+        usuarios.append(nuevo_usuario)
         print("¡Usuario registrado con éxito!")
         return nuevo_usuario
 
