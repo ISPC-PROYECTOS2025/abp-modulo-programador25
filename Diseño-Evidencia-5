@@ -33,3 +33,25 @@ Clase GestorDispositivos
 + listar_dispositivos(): List<Dispositivo>
 + agregar_dispositivo(dispositivo: Dispositivo): void
 + eliminar_dispositivo(nombre: str): void
+Principios de POO aplicados al diseño
+
+Abstracción
+Cada clase en el diagrama representa una abstracción de la realidad:
+Usuario = persona que usa el sistema.
+Dispositivo = aparato inteligente.
+Automatización = rutina programada.
+Solo se exponen atributos y métodos relevantes (encender, apagar), ocultando detalles internos.
+
+Encapsulamiento
+Los atributos (estado, tipo, nombre) se acceden mediante métodos (encender, apagar, etc.).
+Se evita modificar los datos internos directamente, garantizando consistencia.
+
+Herencia
+Dispositivo funciona como clase base.
+Subclases como Luz, Sensor o Cafetera heredarían atributos y métodos comunes.
+Ejemplo: todas heredan encender() y apagar(), pero una Luz puede tener ajustar_brillo().
+
+Polimorfismo
+Automatización puede recorrer su lista de dispositivos y ejecutar encender() en todos, sin importar de qué tipo sean.
+Cada dispositivo responde con su propia implementación: la luz se enciende, la cafetera empieza a calentar, el sensor activa su modo, etc.
+
