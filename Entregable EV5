@@ -1,0 +1,35 @@
+# 📘 Evidencia 5 – Diseño de Clases (Programación I)
+
+## 📌 Diagrama de Clases (UML)
+
+Clase Usuario
+- id: int
+- nombre: str
+- dispositivos: List<Dispositivo>
++ registrar_dispositivo(dispositivo: Dispositivo): void
++ eliminar_dispositivo(nombre: str): void
++ obtener_dispositivo(nombre: str) -> Dispositivo
+
+Clase Dispositivo
+- id: int
+- nombre: str
+- tipo: str
+- estado: bool   // True=encendido, False=apagado
++ encender(): void
++ apagar(): void
++ __str__(): str
+
+Clase Automatizacion
+- id: int
+- nombre: str
+- dispositivos: List<Dispositivo>
+- hora_activacion: str
++ activar(): void
++ validar_dispositivos_registrados(usuario: Usuario) -> bool
++ __str__(): str
+
+Clase GestorDispositivos
+- usuario: Usuario
++ listar_dispositivos(): List<Dispositivo>
++ agregar_dispositivo(dispositivo: Dispositivo): void
++ eliminar_dispositivo(nombre: str): void
