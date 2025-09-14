@@ -49,15 +49,32 @@ INSERT INTO automatizacion (id_usuario, id_dispositivo, condicion, fecha_hora) V
 (8,9,'Activar alarma si movimiento','2025-09-16 16:10:00'),
 (9,1,'Medir temperatura cada 10 min','2025-09-16 17:10:00');
 
-
+-- Muestra todo los datos de la tabla usuario,dispositivo,notificaciones,automatizacion
 SELECT * FROM usuario;
 SELECT * FROM dispositivo;
 SELECT * FROM notificaciones;
 SELECT * FROM automatizacion;
 
+-- Muestra el nombre de usuario y el correo electrónico de los primeros 5 usuarios registrados
 SELECT nombre_usuario, correo_electronico FROM usuario WHERE id_usuario <= 5;
 
+-- Actualiza la contraseña del usuario con id_usuario = 1
 UPDATE usuario
 SET contrasena = 'jesi1234'
 WHERE id_usuario = 1;
+
+-- Actualiza el correo electrónico del usuario con id_usuario = 1
+UPDATE usuario
+SET correo_electronico = 'jesica_valdivia@hotmail.com'
+WHERE id_usuario = 1;
+
+-- Muestra el nombre y tipo de todos los dispositivos del usuario con id_usuario = 1
+SELECT nombre, tipo
+FROM dispositivo
+WHERE id_usuario = 1;
+
+-- Muestra los mensajes y la fecha/hora de las notificaciones registradas a partir del 14/09/2025
+SELECT mensaje, fecha_hora
+FROM notificaciones
+WHERE fecha_hora >= '2025-09-14 00:00:00';
 
