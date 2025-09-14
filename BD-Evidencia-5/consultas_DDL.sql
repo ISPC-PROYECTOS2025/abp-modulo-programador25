@@ -36,3 +36,8 @@ CREATE TABLE automatizacion (
     FOREIGN KEY (id_dispositivo) REFERENCES dispositivo(id_dispositivo)
 );
 
+SHOW TABLES;
+
+DESCRIBE usuario;
+
+
