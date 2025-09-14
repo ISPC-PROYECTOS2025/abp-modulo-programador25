@@ -38,6 +38,4 @@ CREATE TABLE automatizacion (
 
 SHOW TABLES;
 
-DESCRIBE usuario;
-
 

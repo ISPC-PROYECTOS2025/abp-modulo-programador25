@@ -78,4 +78,7 @@ SELECT mensaje, fecha_hora
 FROM notificaciones
 WHERE fecha_hora >= '2025-09-14 00:00:00';
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 66cd83a7e178875453fbe02f6f49931cc821fc5d
