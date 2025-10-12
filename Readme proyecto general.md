@@ -34,6 +34,26 @@ El alcance abarca:
 - Documentación técnica y funcional.  
 - Trabajo colaborativo en repositorio **GitHub**.
 
+---
+
+## 🧠 **Resumen del programa `main.py`**
+
+El programa principal de consola permite:
+
+- **Registrar un nuevo usuario estándar** e **iniciar sesión**.
+
+---
+
+### 👤 **Si inicia sesión un usuario estándar, puede:**
+- Consultar sus **datos personales**.  
+- Consultar la lista de **dispositivos disponibles**.
+
+---
+
+### 🛠️ **Si inicia sesión un usuario administrador, puede:**
+- **Gestionar dispositivos (CRUD):** crear, editar, eliminar y listar.  
+- **Cambiar el rol** de otros usuarios.
+
 
 ---
 
