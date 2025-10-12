@@ -6,7 +6,8 @@ CREATE TABLE usuario (
     nombre_usuario VARCHAR(50) NOT NULL,
     correo_electronico VARCHAR(100) UNIQUE NOT NULL,
     contrasena VARCHAR(100) NOT NULL,
-    fecha_registro DATE
+    fecha_registro DATE,
+    rol VARCHAR (50) NOT NULL
 );
 
 CREATE TABLE dispositivo (
