@@ -58,6 +58,8 @@ SELECT * FROM dispositivo;
 SELECT * FROM notificaciones;
 SELECT * FROM automatizacion;
 
+-- CONSULTAS MULTITABLA
+
 -- Consulta 1: Mostrar todos los dispositivos con su usuario
 -- Permite al administrador identificar qué usuario posee cada dispositivo en el sistema.
 SELECT u.nombre_usuario, d.nombre AS dispositivo, d.tipo
@@ -87,6 +89,15 @@ JOIN dispositivo d ON u.id_usuario = d.id_usuario
 WHERE d.fecha_registro >= CURDATE() - INTERVAL 3 DAY
 GROUP BY u.nombre_usuario
 ORDER BY dispositivos_recientes DESC;
+
+-- Consulta 5: Usuarios inactivos (no registran dispositivos hace 2 años)
+-- Permite identificar usuarios que podrían estar inactivos y planificar acciones de reactivación
+SELECT u.nombre_usuario, MAX(d.fecha_registro) AS ultimo_dispositivo
+FROM usuario u
+LEFT JOIN dispositivo d ON u.id_usuario = d.id_usuario
+GROUP BY u.id_usuario
+HAVING MAX(d.fecha_registro) < CURDATE() - INTERVAL 2 YEAR
+   OR MAX(d.fecha_registro) IS NULL;  -- Incluye usuarios que nunca registraron dispositivos
 
 
 -- SUBCONSULTAS
